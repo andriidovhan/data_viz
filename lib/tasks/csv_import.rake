@@ -3,7 +3,7 @@ require 'csv'
 namespace :csv_import do
   desc "move csv data from file"
   task upload_data: :environment do
-    csv_text = File.read("/Users/andrii/Documents/cyber_craft/session_history.csv")
+    csv_text = File.read("public/session_history.csv")
     csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
     csv.each do |row|
       t = Session.new
