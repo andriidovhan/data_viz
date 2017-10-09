@@ -1,9 +1,6 @@
 %h1 Data visualization
-%h3 Amount of build per day
-= line_chart @sessions.group_and_count_per_day
 %h3 Amount of build per day(granulated)
 = line_chart @sessions.group(:summary_status).group_and_count_per_day
 %h3 Build duration
 = line_chart @sessions.pluck(:created_at, :duration), xtitle: "Day", ytitle: "Duration"
-%h3 Abnormal(% of failed builds)
-= line_chart @abnormal,  xtitle: "Day", ytitle: "Percent of failed build"
+
