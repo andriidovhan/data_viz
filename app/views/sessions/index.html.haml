@@ -1,5 +1,5 @@
 %h1 Data visualization
 %h3 Amount of build per day(granulated)
-= column_chart @sessions.group(:summary_status).group_and_count_per_day, stacked: true
-%h3 Build duration
-= line_chart @sessions.pluck(:created_at, :duration), xtitle: "Day", ytitle: "Duration"
+= column_chart @sessions.group(:summary_status).group_and_count_per_day, stacked: true, discrete: false
+%h3 Build duration(per_day)
+= line_chart @sessions.group_by_day(:created_at).average(:duration), xtitle: "Day", ytitle: "Duration, ms"
