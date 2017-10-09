@@ -3,4 +3,5 @@
 = line_chart @sessions.group(:summary_status).group_and_count_per_day
 %h3 Build duration
 = line_chart @sessions.pluck(:created_at, :duration), xtitle: "Day", ytitle: "Duration"
-
+%h3 Abnormal(% of failed builds)
+= column_chart @sessions.calc_abnormal,  xtitle: "Day", ytitle: "Percent of failed build"
